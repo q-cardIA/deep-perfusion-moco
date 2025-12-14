@@ -74,8 +74,8 @@ class dataset_reference_affine(Dataset):
         reference_arr = np.load(reference_path)
 
         # Load MRI numpy arrays and normalize
-        image_arr_mri = np.load(image_path.replace("/data/","/data_org_crop/").replace("imgL","imgo").replace("-L_S","-O").replace("_.npy",".npy"))
-        reference_arr_mri = np.load(reference_path.replace("/data/","/data_org_crop/").replace("imgL","imgo").replace("-L_S","-O").replace("_.npy",".npy"))
+        image_arr_mri = np.load(image_path.replace("imgL","imgo"))
+        reference_arr_mri = np.load(reference_path.replace("imgL","imgo"))
         image_arr_mri = (image_arr_mri - np.min(image_arr_mri)) / (np.max(image_arr_mri) - np.min(image_arr_mri))
         reference_arr_mri = (reference_arr_mri - np.min(reference_arr_mri)) / (np.max(reference_arr_mri) - np.min(reference_arr_mri))
 

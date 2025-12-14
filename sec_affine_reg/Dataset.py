@@ -72,7 +72,7 @@ class dataset_reference_affine(Dataset):
         image_path = lst_path[patient_specific_ind]     
         
         # Get reference image path
-        reference_path = image_path.replace("result", "ref_pca")
+        reference_path = image_path.replace("img", "pca")
         # Load moving and fixed image
         image_arr = np.load(image_path)                 
         reference_arr = np.load(reference_path)
@@ -95,57 +95,9 @@ class dataset_reference_affine(Dataset):
             # Convert shape of image to (bs, nr_channel, x, y)
             img_new = np.empty((1,128,128))
             img_new[0,:,:] = image_arr
-
-            # ref_new = np.empty((1,128,128))
-            # ref_new[0,:,:] = reference_arr
             
             image_arr = self.transform(img_new)[0]
-            # reference_arr = self.transform(ref_new)[0]
-            
-        #     # Apply to img
-        #     transform_affine = self.create_transform()
-        #     img_new = np.empty((1,128,128))
-        #     img_new[0,:,:] = image_arr
-        #     # image_arr = transform_affine(img_new)[0][0]
-        #     image_arr = np.asarray(transform_affine(img_new)[0])[0]
-        #     # apply to ref
-        #     transform_affine = self.create_transform()
-        #     ref_new = np.empty((1,128,128))
-        #     ref_new[0,:,:] = reference_arr
-        #     # reference_arr = transform_affine(ref_new)[0][0]
-        #     reference_arr = np.asarray(transform_affine(ref_new)[0])[0]
 
-        #     # Also apply intensity augmentations
-        #     # img_new = np.empty((1,128,128))
-        #     # img_new[0,:,:] = image_arr
-        #     # image_arr = np.asarray(self.transform(image_arr)[0])
-        #     # Also apply intensity augmentations
-        #     # ref_new = np.empty((1,128,128))
-        #     # ref_new[0,:,:] = reference_arr
-        #     # reference_arr = np.asarray(self.transform(ref_new)[0])
-        # if self.transform != None and self.key != "valid":
-        #     # image_arr = self.transform(image_arr)
-        #     # reference_arr = self.transform(reference_arr)
-
-        #     img_new = np.empty((1,128,128))
-        #     img_new[0,:,:] = image_arr
-        #     img_new = transforms.RandScaleIntensity(factors=(-0.3,0.3), prob=1)(img_new)
-        #     img_new = transforms.RandShiftIntensity(offsets=(-0.2,0.2))(img_new)
-        #     img_new = transforms.RandGaussianNoise(prob=1, mean=0, std=0.1, dtype=np.float32)(img_new)
-        #     image_arr = np.asarray(img_new)[0]
-
-        #     ref_new = np.empty((1,128,128))
-        #     ref_new[0,:,:] = reference_arr
-        #     ref_new = transforms.RandScaleIntensity(factors=(-0.3,0.3), prob=1)(ref_new)
-        #     ref_new = transforms.RandShiftIntensity(offsets=(-0.2,0.2))(ref_new)
-        #     ref_new = transforms.RandGaussianNoise(prob=1, mean=0, std=0.1, dtype=np.float32)(ref_new)
-        #     reference_arr = np.asarray(ref_new)[0]
-        # # print(image_path)
-        # # print("final image",image_arr.dtype)
-        # # print("final reference", reference_arr.dtype)
-        # # if reference_arr.dtype != torch.float32:
-        # #     print("Wrong dtype!",image_path)
-        # # print(image_arr.shape, reference_arr.shape)
         
         sample = {'image':image_arr, 'reference':reference_arr, "image_original":image_arr_org, "reference_original":reference_arr_org}
 
@@ -210,10 +162,6 @@ class dataset_reference_affine(Dataset):
             random_translate_param = np.random.randint(self.config["augmentation"]["affine"]["translation"]["range"][0], self.config["augmentation"]["affine"]["translation"]["range"][1])
             return transforms.Affine(rotate_params=random_rotate_param, shear_params=0, translate_params=random_translate_param, scale_params=0)
     
-            # random_rotate_param = [self.config["augmentation"]["affine"]["rotation"]["range"]]
-            # print(random)
-            # random_translate_param = [self.config["augmentation"]["affine"]["translation"]["range"]]
-            # return transforms.RandAffine(rotate_range=random_rotate_param, shear_range=0, translate_range=random_translate_param, scale_range=0)
         else:
             return 0
         
