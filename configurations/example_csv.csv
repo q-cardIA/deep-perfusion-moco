@@ -1,0 +1,2 @@
+folder_to_mr_images_patient, peak_lv_time_frame, crop_inds_min_x, crop_inds_max_x, crop_inds_min_y, crop_inds_max_y, low_res_index, low_res_recognition_number
+# TODO: add lines for all patients in your dataset

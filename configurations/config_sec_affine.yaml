@@ -1,0 +1,70 @@
+dataloader:
+  csv_loc:
+    train: ... # TODO: Add path to CSV for training
+    valid: ... # TODO: Add path to CSV for validation
+  train:
+    batch_size: 16
+  valid:
+    batch_size: 16
+
+dataset:
+  train:
+    shuffle: True
+    drop_last: True
+  valid:
+    shuffle: False
+    drop_last: True
+    
+general:
+  num_workers: 4
+  LV_peak_shift: 10
+
+training:
+  lr: 1e-5
+  num_epochs: 200
+  loss_function: LNCC
+  hist_eq: True
+  include_lowres: True
+
+model:
+  num_channel_initial: 16
+  depth: 6
+
+loss:
+  LNCC:
+    lam: 1
+  GMI:
+    lam: 0
+  BE:     # bending energy
+    lam: 0
+
+augmentation: 
+  apply: True
+  affine:
+    prob: 0.5
+    translation:
+      range:
+      - -10.0
+      - 10.0
+    rotation:
+      range:
+      - -0.4
+      - 0.4
+
+  gaussian_noise: 
+    prob: 1
+    mean: 0.0
+    std: 0.01
+
+  scale_intensity: 
+    prob: 1
+    factors:
+    - -0.3
+    - 0.3
+
+  shift_intensity: 
+    prob: 1
+    offsets:
+    - -0.2
+    - 0.2
+

@@ -1,0 +1,76 @@
+dataloader:
+  csv_loc:
+    train: ... # TODO: Add path to CSV for training
+    valid: ... # TODO: Add path to CSV for validation
+  train:
+    batch_size: 16 #24
+  valid:
+    batch_size: 16 #24
+
+# with siemens --> changed dataset
+dataset:
+  train:
+    shuffle: True
+    drop_last: True
+  valid:
+    shuffle: False
+    drop_last: True
+    
+general:
+  num_workers: 4
+  LV_peak_shift: 10
+
+training:
+  lr: 1e-5
+  num_epochs: 300
+  loss_function: LNCC
+  hist_eq: True
+  hist_eq_mri: True
+  include_lowres: True
+  cut_side: False
+
+model:
+  num_channel_initial: 10
+  depth: 6
+
+loss:
+  LNCC:
+    lam: 1
+  GMI:
+    lam: 0
+  BE:     # bending energy
+    lam: 0
+  mri_rpca_loss: 
+    MI: 1
+    SSIM: 0
+    NCC: 0
+
+augmentation:
+  apply: True 
+  affine:
+    prob: 0 # whenever augmentation[apply] = True, rotation and translation are applied
+    translation:
+      range:
+      - -20.0
+      - 20.0
+    rotation:
+      range:
+      - -0.8
+      - 0.8
+
+  gaussian_noise:
+    prob: 1
+    mean: 0.0
+    std: 0.01
+
+  scale_intensity: 
+    prob: 1
+    factors:
+    - -0.3
+    - 0.3
+
+  shift_intensity:
+    prob: 1
+    offsets:
+    - -0.2
+    - 0.2
