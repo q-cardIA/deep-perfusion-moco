@@ -1,10 +1,11 @@
 # Deep learning motion correction of quantitative stress perfusion cardiovascular magnetic resonance 
-PyTorch implementation of our [paper](https://arxiv.org/abs/2510.00723), aiming to align contrast enhanced perfusion CMR images. 
+PyTorch implementation of our [paper](https://arxiv.org/abs/2510.00723), aiming to align contrast enhanced perfusion CMR images. Our approach uses deep learning-based image registration for fast and accurate motion correction of quantitative perfusion CMR. It is​ trained and evaluated with data from 201 patients, and it​ robustly aligns low-resolution AIF and proton density-weighted images with perfusion series. 
+
 ![Visualization](figures/Graphical_abstract.jpg)
 
 # Repository structure
 ## Inference
-Create an environment using `environemnt.yml`. 
+Create an environment using `environment.yml`. 
 Download the models via [this link](https://emckclac-my.sharepoint.com/:f:/g/personal/k1633520_kcl_ac_uk/IgDQ4YJ4_h15TqA2p3kroqURAdpj7lQm_wIwp_DDbVPviv4?e=fWUzAM)
 
 Adapt your data to fit the data structure as described in `run.py` and run the file.
