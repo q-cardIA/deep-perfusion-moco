@@ -36,7 +36,8 @@ Adapt the config file from folder `configurations`.
 
 ## Citation
 If you find our work useful in your research please consider citing our paper:
-```@misc{schueler2025deeplearningmotioncorrection,
+```
+@misc{schueler2025deeplearningmotioncorrection,
       title={Deep learning motion correction of quantitative stress perfusion cardiovascular magnetic resonance}, 
       author={Noortje I. P. Schueler and Nathan C. K. Wong and Richard J. Crawley and Josien P. W. Pluim and Amedeo Chiribiri and Cian M. Scannell},
       year={2025},
@@ -44,4 +45,5 @@ If you find our work useful in your research please consider citing our paper:
       archivePrefix={arXiv},
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2510.00723}, 
-}```
+}
+```
