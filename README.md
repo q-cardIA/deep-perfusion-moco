@@ -1,11 +1,11 @@
 # Deep learning motion correction of quantitative stress perfusion cardiovascular magnetic resonance 
-PyTorch implementation of our [paper](https://arxiv.org/abs/2510.00723), aiming to align contrast enhanced perfusion CMR images. Our approach uses deep learning-based image registration for fast and accurate motion correction of quantitative perfusion CMR. It is​ trained and evaluated with data from 201 patients, and it​ robustly aligns low-resolution AIF and proton density-weighted images with perfusion series. 
+PyTorch implementation of our [paper](https://www.sciencedirect.com/science/article/pii/S1097664726000153?via%3Dihub), aiming to align contrast enhanced perfusion CMR images. Our approach uses deep learning-based image registration for fast and accurate motion correction of quantitative perfusion CMR. It is​ trained and evaluated with data from 201 patients, and it​ robustly aligns low-resolution AIF and proton density-weighted images with perfusion series. 
 
 ![Visualization](figures/graphical-abstract.png)
 
 # Repository structure
 ## Inference
-Create an environment using `environment.yml`. 
+Create an environment using the [`requirements.txt`](https://github.com/q-cardIA/deep-perfusion-moco/blob/main/inference/requirements.txt) (tested with python 3.9).
 Download the models via [this link](https://emckclac-my.sharepoint.com/:f:/g/personal/k1633520_kcl_ac_uk/IgDQ4YJ4_h15TqA2p3kroqURAdpj7lQm_wIwp_DDbVPviv4?e=fWUzAM)
 
 Adapt your data to fit the data structure as described in `run.py` and run the file.
@@ -37,13 +37,14 @@ Adapt the config file from folder `configurations`.
 ## Citation
 If you find our work useful in your research please consider citing our paper:
 ```
-@misc{schueler2025deeplearningmotioncorrection,
-      title={Deep learning motion correction of quantitative stress perfusion cardiovascular magnetic resonance}, 
-      author={Noortje I. P. Schueler and Nathan C. K. Wong and Richard J. Crawley and Josien P. W. Pluim and Amedeo Chiribiri and Cian M. Scannell},
-      year={2025},
-      eprint={2510.00723},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2510.00723}, 
+@article{SCHUELER2026deeplearningmotioncorrection,
+      title = {Deep learning motion correction of quantitative stress perfusion cardiovascular magnetic resonance},
+      journal = {Journal of Cardiovascular Magnetic Resonance},
+      pages = {102697},
+      year = {2026},
+      issn = {1097-6647},
+      doi = {https://doi.org/10.1016/j.jocmr.2026.102697},
+      url = {https://www.sciencedirect.com/science/article/pii/S1097664726000153},
+      author = {Noortje I.P. Schueler and Nathan C.K. Wong and Richard J. Crawley and Josien P.W. Pluim and Amedeo Chiribiri and Cian M. Scannell}
 }
 ```
